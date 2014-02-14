@@ -6,6 +6,7 @@
 require 'csv'
 require 'query_report/report'
 require 'query_report/report_pdf'
+require 'kconv'
 
 module QueryReport
   module Helper
@@ -55,7 +56,7 @@ module QueryReport
           records.each do |record|
             csv << record.values.collect { |val| val.kind_of?(String) ? view_context.strip_links(val) : val }
           end
-        end
+        end.tosjis
       else
         nil
       end
